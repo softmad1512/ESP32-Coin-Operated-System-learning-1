@@ -23,4 +23,4 @@
 - SSD1306 OLED
 - 
 ## 系統架構
-https://www.youtube.com/watch?v=cNEUfEYmMS4
+https://youtu.be/qgP4X9GZBuE
