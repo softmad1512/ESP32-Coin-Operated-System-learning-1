@@ -43,7 +43,7 @@ void setup()
     Serial.begin(115200);   // 啟動序列通訊（Debug用）
     pinMode(COIN_PIN, INPUT_PULLUP);    // 輸入：投幣訊號(高電平)
     pinMode(RELAY_PIN, OUTPUT);         // 輸出：繼電器訊號
-    digitalWrite(RELAY_PIN, HIGH);       // 繼電器訊號（高電平）
+    digitalWrite(RELAY_PIN, LOW);       // 繼電器訊號（低電平）
 
     //偵測投幣電平下降時執行coinISR
     attachInterrupt(digitalPinToInterrupt(COIN_PIN), coinISR, FALLING);  
@@ -91,7 +91,7 @@ void loop() {
             {
                 // 繼電器輸出高電平(啟動)
                 Serial.println("Relay ON");
-                digitalWrite(RELAY_PIN, LOW);   
+                digitalWrite(RELAY_PIN, HIGH);   
                 // 記錄當下時間
                 relayStartTime = millis();       
                 // 切換設備狀態(繼電器動作)
@@ -106,7 +106,7 @@ void loop() {
             {
                 // 繼電器輸出低電平(關閉)
                 Serial.println("Relay OFF");
-                digitalWrite(RELAY_PIN, HIGH);  
+                digitalWrite(RELAY_PIN, LOW);  
                 // 扣除遊戲需求幣數並更新總投幣數
                 totalCoin-=game_cost;
                 // 切換設備狀態(投幣監控)
